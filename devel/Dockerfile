@@ -9,4 +9,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends cuda-cudart-dev
     libnpp-dev-12-2=12.1.1.14-1 libcusparse-dev-12-2=12.1.1.53-1 libcublas-dev-12-2=12.2.1.16-1 cuda-nsight-compute-12-2=12.2.0-1 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*  && \
 # Keep apt from auto upgrading the cublas and nccl packages. See https://gitlab.com/nvidia/container-images/cuda/-/issues/88
-    apt-mark hold ${NV_LIBCUBLAS_DEV_PACKAGE_NAME}
+    apt-mark hold libcublas-dev-12-2=12.2.1.16-1
