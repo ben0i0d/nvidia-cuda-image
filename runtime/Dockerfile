@@ -1,4 +1,4 @@
-FROM eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:base
+FROM eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-base-debain13
 
 LABEL maintainer "NVIDIA CORPORATION <cudatools@nvidia.com>"
 

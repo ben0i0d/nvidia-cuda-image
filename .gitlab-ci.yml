@@ -18,7 +18,7 @@ before_script:
 #       --cache-run-layers=true
 #       --snapshot-mode=redo
 #       --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
-#       --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:base"
+#       --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-base-debain13"
 # runtime-build:
 #   stage: build
 #   needs: [base-build]
@@ -30,7 +30,7 @@ before_script:
 #       --cache=false
 #       --snapshot-mode=redo
 #       --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
-#       --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:runtime"
+#       --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-runtime-debain13"
 devel-build:
   stage: build
   needs: [] # runtime-build
@@ -42,4 +42,4 @@ devel-build:
       --cache=false
       --snapshot-mode=redo
       --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
-      --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:devel"
+      --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-devel-debain13"
