@@ -3,9 +3,9 @@ FROM eoelab.org:1032/mirrored-sources/mirror-image-stacks/debian:trixie
 LABEL maintainer="Pd.ch <cpd233@outlook.com>"
 
 # nvidia-container-runtime
-ENV NVIDIA_VISIBLE_DEVICES=all
-    NVIDIA_DRIVER_CAPABILITIES=compute,utility
-    PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
+ENV NVIDIA_VISIBLE_DEVICES=all \
+    NVIDIA_DRIVER_CAPABILITIES=compute,utility \
+    PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH} \
     LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
 
 COPY NGC-DL-CONTAINER-LICENSE /
