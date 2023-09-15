@@ -5,35 +5,35 @@ image:
 before_script:
   - wget https://eoelab.org:1024/index.php/s/ac3eQY4byy4mK2g/download/eoelab.org.crt
   - mv eoelab.org.crt /kaniko/ssl/certs/additional-ca-cert-bundle.crt
-# base-build:
-#   stage: build
-#   needs: []
-#   script:
-#     - cd base
-#     - /kaniko/executor
-#       --context ./
-#       --dockerfile "Dockerfile"
-#       --cache=true
-#       --cache-copy-layers=true
-#       --cache-run-layers=true
-#       --snapshot-mode=redo
-#       --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
-#       --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-base-debain13"
-# runtime-build:
-#   stage: build
-#   needs: [base-build]
-#   script:
-#     - cd runtime
-#     - /kaniko/executor
-#       --context ./
-#       --dockerfile "Dockerfile"
-#       --cache=false
-#       --snapshot-mode=redo
-#       --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
-#       --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-runtime-debain13"
+base-build:
+  stage: build
+  needs: []
+  script:
+    - cd base
+    - /kaniko/executor
+      --context ./
+      --dockerfile "Dockerfile"
+      --cache=true
+      --cache-copy-layers=true
+      --cache-run-layers=true
+      --snapshot-mode=redo
+      --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
+      --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-base-debain13"
+runtime-build:
+  stage: build
+  needs: [base-build]
+  script:
+    - cd runtime
+    - /kaniko/executor
+      --context ./
+      --dockerfile "Dockerfile"
+      --cache=false
+      --snapshot-mode=redo
+      --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
+      --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-runtime-debain13"
 devel-build:
   stage: build
-  needs: [] # runtime-build
+  needs: [runtime-build] # 
   script:
     - cd devel
     - /kaniko/executor
