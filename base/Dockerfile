@@ -1,4 +1,4 @@
-FROM eoelab.org:1032/mirrored-sources/mirror-image-stacks/debian:trixie
+FROM eoelab.org:1032/mirrored-sources/mirrored-sources/debian:trixie
 
 LABEL maintainer="Pd.ch <cpd233@outlook.com>"
 
