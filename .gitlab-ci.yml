@@ -1,44 +1,44 @@
 # Build Docker image with CI/CD and push to the GitLab registry.
-# image:
-#   name: gcr.io/kaniko-project/executor:debug
-#   entrypoint: [""]
-# before_script:
-#   - cat $EOELAB_DOMAIN_CERT > /kaniko/ssl/certs/additional-ca-cert-bundle.crt
-# base-build:
-#   stage: build
-#   needs: []
-#   script:
-#     - cd base
-#     - /kaniko/executor
-#       --context ./
-#       --dockerfile "Dockerfile"
-#       --cache=true
-#       --cache-copy-layers=true
-#       --cache-run-layers=true
-#       --snapshot-mode=redo
-#       --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
-#       --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-base-debian13"
-# runtime-build:
-#   stage: build
-#   needs: [base-build]
-#   script:
-#     - cd runtime
-#     - /kaniko/executor
-#       --context ./
-#       --dockerfile "Dockerfile"
-#       --cache=false
-#       --snapshot-mode=redo
-#       --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
-#       --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-runtime-debian13"
-# devel-build:
-#   stage: build
-#   needs: [runtime-build] # 
-#   script:
-#     - cd devel
-#     - /kaniko/executor
-#       --context ./
-#       --dockerfile "Dockerfile"
-#       --cache=false
-#       --snapshot-mode=redo
-#       --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
-#       --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-devel-debian13"
+image:
+  name: gcr.io/kaniko-project/executor:debug
+  entrypoint: [""]
+before_script:
+  - cat $EOELAB_DOMAIN_CERT > /kaniko/ssl/certs/additional-ca-cert-bundle.crt
+base-build:
+  stage: build
+  needs: []
+  script:
+    - cd base
+    - /kaniko/executor
+      --context ./
+      --dockerfile "Dockerfile"
+      --cache=true
+      --cache-copy-layers=true
+      --cache-run-layers=true
+      --snapshot-mode=redo
+      --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
+      --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-base-debian13"
+runtime-build:
+  stage: build
+  needs: [base-build]
+  script:
+    - cd runtime
+    - /kaniko/executor
+      --context ./
+      --dockerfile "Dockerfile"
+      --cache=false
+      --snapshot-mode=redo
+      --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
+      --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-runtime-debian13"
+devel-build:
+  stage: build
+  needs: [runtime-build] # 
+  script:
+    - cd devel
+    - /kaniko/executor
+      --context ./
+      --dockerfile "Dockerfile"
+      --cache=false
+      --snapshot-mode=redo
+      --cache-repo "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cache"
+      --destination "eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-devel-debian13"
