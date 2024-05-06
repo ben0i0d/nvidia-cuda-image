@@ -1,6 +1,4 @@
-FROM eoelab.org:1032/mirrored-sources/mirrored-sources/debian:trixie
-
-LABEL maintainer="Pd.ch <cpd233@outlook.com>"
+FROM debian:bookworm
 
 # nvidia-container-runtime
 ENV NVIDIA_VISIBLE_DEVICES=all \

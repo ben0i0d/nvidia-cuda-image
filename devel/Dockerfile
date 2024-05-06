@@ -1,6 +1,4 @@
-FROM eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-runtime-debian13
-
-LABEL maintainer="Pd.ch <cpd233@outlook.com>"
+FROM ben0i0d/cuda:12.2.0-runtime-debian12
 
 ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs
 

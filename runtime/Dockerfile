@@ -1,6 +1,4 @@
-FROM eoelab.org:1032/build-image-stacks/nvidia-cuda-image/cuda:12.2.0-base-debian13
-
-LABEL maintainer="Pd.ch <cpd233@outlook.com>"
+FROM ben0i0d/cuda:12.2.0-base-debian12
 
 ENV NVIDIA_PRODUCT_NAME="CUDA"
 
